@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { collection, getDocs } from "firebase/firestore";
 import { db } from '../firebase'
+import { doc, deleteDoc } from "firebase/firestore";
 
 const List = () => {
     const [data, setData] = useState([])
@@ -22,6 +23,16 @@ const List = () => {
     }, [])
     console.log(data)
 
+    const handleDelete = async (id) => {
+        try {
+            await deleteDoc(doc(db, "users", id));
+            setData(data.filter((item) => item.id !== id))
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <div>
             <h1>List of items</h1>
@@ -39,6 +50,7 @@ const List = () => {
                             <td style={{ outline: 'none' }}><img src={user.img} alt="" /></td>
                             <td>{user.name}</td>
                             <td>{user.email}</td>
+                            <td style={{ outline: 'none' }}><button onClick={(id) => handleDelete(user.id)}>Delete</button></td>
                         </tr>
                     ))}
                 </tbody>
