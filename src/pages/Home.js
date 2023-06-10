@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { signOut } from "firebase/auth";
 import { auth } from '../firebase';
 import { AuthContext } from '../context/AuthContext'
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const { dispatch, currentUser } = useContext(AuthContext)
@@ -17,6 +18,7 @@ const Home = () => {
   return (
     <div>You are logged in. <br />
     
+    <Link to='/new'><button>Create new post</button></Link>
     <button onClick={logout}>Sign out</button>
     </div>
   )

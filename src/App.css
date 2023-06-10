@@ -42,6 +42,11 @@ button {
   padding: .5rem 1rem;
   border-radius: .5rem;
   margin-top: 1rem;
+
+  &:disabled{
+    background-color: rgba(0, 128, 128, 0.258);
+    cursor: not-allowed;
+  }
 }
 button:hover {
   background-color: teal;

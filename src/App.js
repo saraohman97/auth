@@ -5,9 +5,11 @@ import Login from './auth/Login'
 import Home from './pages/Home';
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
+import New from './pages/New';
 
 function App() {
   const { currentUser } = useContext(AuthContext)
+  
   const RequireAuth = ({ children }) => {
     return currentUser ? children : <Navigate to='/login' />
   }
@@ -21,6 +23,12 @@ function App() {
         <Route path='/' element={
           <RequireAuth>
             <Home />
+          </RequireAuth>
+        } />
+
+        <Route path='/new' element={
+          <RequireAuth>
+            <New />
           </RequireAuth>
         } />
       </Routes>

@@ -17,8 +17,8 @@ const Login = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        dispatch({type: "LOGIN", payload: user})
+        const data = userCredential.user;
+        dispatch({type: "LOGIN", payload: data})
         navigate('/')
       })
       .catch((error) => {
