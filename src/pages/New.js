@@ -71,7 +71,7 @@ const New = () => {
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        setData((prev)=> ({...prev, img:downloadURL}))
+                        setData((prev) => ({ ...prev, img: downloadURL }))
                     });
                 }
             );
@@ -103,21 +103,23 @@ const New = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h1>New user</h1>
-            <div className="input-group">
-                <label htmlFor="file">Image</label>
-                <input type="file" id='file' onChange={(e) => setFile(e.target.files[0])} />
-            </div>
-
-            {userInputs.map((input) => (
-                <div className='input-group' key={input.id}>
-                    <label>{input.label}</label>
-                    <input id={input.id} type={input.type} placeholder={input.placeholder} onChange={handleInput} />
+        <form onSubmit={handleSubmit} style={{ width: '600px', maxHeight: '400px'}}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', rowGap: '1rem'}}>
+                <h1>New user</h1>
+                <div className="input-group">
+                    <label htmlFor="file">Image</label>
+                    <input type="file" id='file' onChange={(e) => setFile(e.target.files[0])} style={{marginRight: '1rem'}}  />
                 </div>
-            ))}
 
-            <button disabled={perc !== null && perc < 100} type='submit'>Send</button>
+                {userInputs.map((input) => (
+                    <div className='input-group' key={input.id}>
+                        <label>{input.label}</label>
+                        <input id={input.id} type={input.type} placeholder={input.placeholder} onChange={handleInput}  style={{marginRight: '1rem'}} />
+                    </div>
+                ))}
+
+                <button disabled={perc !== null && perc < 100} type='submit'>Send</button>
+            </div>
         </form>
     )
 }
