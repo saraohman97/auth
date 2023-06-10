@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Register from './auth/Register';
 import Login from './auth/Login'
@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthContext';
 import New from './pages/New';
+import List from './components/List';
 
 function App() {
   const { currentUser } = useContext(AuthContext)
@@ -31,7 +32,14 @@ function App() {
             <New />
           </RequireAuth>
         } />
+
+        <Route path='/list' element={
+          <RequireAuth>
+            <List />
+          </RequireAuth>
+        } />
       </Routes>
+      <Link to='/'><button>Home</button></Link>
     </div>
   );
 }

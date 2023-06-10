@@ -18,7 +18,8 @@ const Home = () => {
   return (
     <div>You are logged in. <br />
     
-    <Link to='/new'><button>Create new post</button></Link>
+    <Link to='/new'><button>Create new post</button></Link> <br />
+    <Link to='/list'><button>Listed items</button></Link> <br />
     <button onClick={logout}>Sign out</button>
     </div>
   )
